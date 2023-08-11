@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRODECOL</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: -100px; 
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #0a0a0a;
+            border-radius: 5px;
+        }
+
+        h2 {
+            margin-top: 0;  
+        }
+
+        #message {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Información del Pedido</h1>
+
+    {% if mensaje %}
+    <p id="message">{{ mensaje }}</p>
+    {% endif %}
+
+    <form action="/actualizarped" method="post">
+        <label for="codpedido">Número de Pedido:</label>
+        <input type="text" name="codpedido" value="{{ pedido[0] }}" required readonly><br><br>
+
+        <label for="cedula">Cedula:</label>
+        <input type="text" name="cedula" value="{{ pedido[1] }}" required><br><br>
+
+        <label for="nombrepieza">Nombre Pieza:</label>
+        <input type="text" name="nombrepieza" value="{{ pedido[2] }}" required><br><br>
+
+        <label for="tipopieza">Tipo Pieza:</label>
+        <input type="text" name="tipopieza" value="{{ pedido[3] }}" required><br><br>
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="text" name="cantidad" value="{{ pedido[4] }}" required><br><br>
+
+        <input type="submit" name="actualizar" value="Actualizar">
+        <input type="submit" name="cancelar" value="Cancelar">
+    </form>
+</body>
+</html>

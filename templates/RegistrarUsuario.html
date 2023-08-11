@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRODECOL</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: -100px; 
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #0a0a0a;
+            border-radius: 5px;
+        }
+
+        h2 {
+            margin-top: 0;  
+        }
+
+        #message {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Registrar Clientes</h2>
+    <div class="container">
+    <form action="/registrarcl" method="post">
+        <label>Cédula:</label>
+        <input type="text" name="cedula" required><br><br>
+
+        <label>Nombres:</label>
+        <input type="text" name="nombres" required><br><br>
+
+        <label>Género:</label><br>
+        <input type="radio" id="genero-masculino" name="genero" value="Masculino" required>
+        <label for="genero-masculino">Masculino</label>
+        <input type="radio" id="genero-femenino" name="genero" value="Femenino" required>
+        <label for="genero-femenino">Femenino</label><br>
+
+        <label>Correo:</label>
+        <input type="email" name="correo" required><br><br>
+
+        <label>Teléfono:</label>
+        <input type="text" name="telefono" required><br><br>
+
+        <label>Contraseña:</label>
+        <input type="password" name="contraseña" required><br><br>
+
+        <input type="submit" name="registrar" value="Registrar">
+        <input type="submit" name="cancelar" value="Cancelar">
+    </form>
+    </div>
+    <p id="message">{{ message }}</p>
+
+    <!-- Agregar una tabla para mostrar los clientes registrados -->
+    <h2>Clientes Registrados</h2>
+    <table>
+        <tr>
+            <th>Cédula</th>
+            <th>Nombres</th>
+            <th>Género</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+        </tr>
+        {% for client in clients %}
+        <tr>
+            <td>{{ client.cedula }}</td>
+            <td>{{ client.nombres }}</td>
+            <td>{{ client.genero }}</td>
+            <td>{{ client.correo }}</td>
+            <td>{{ client.telefono }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

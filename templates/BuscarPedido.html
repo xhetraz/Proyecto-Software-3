@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de Pedido</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: -100px; 
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #0a0a0a;
+            border-radius: 5px;
+        }
+
+        h2 {
+            margin-top: 0;  
+        }
+
+        #message {
+            color: rgb(95, 3, 3);
+        }
+    </style>
+</head>
+<body>
+    <p id="message">{{ mensaje }}</p>
+
+    <h1>Búsqueda de Pedidos</h1>
+    <form action="/buscar_pedido" method="post">
+        <label for="codpedido">Número de Pedido:</label>
+        <input type="text" name="codpedido" required>
+        <input type="submit" value="Buscar">
+    </form>
+</body>
+</html>

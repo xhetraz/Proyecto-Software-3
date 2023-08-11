@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRODECOL</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: -100px; 
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #0a0a0a;
+            border-radius: 5px;
+        }
+
+        h2 {
+            margin-top: 0;  
+        }
+
+        #message {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Información del Cliente</h1>
+
+    {% if mensaje %}
+    <p id="message">{{ mensaje }}</p>
+    {% endif %}
+
+    <form action="/actualizarcl" method="post">
+        <label for="cedula">Número de Cédula:</label>
+        <input type="text" name="cedula" value="{{ cliente[0] }}" required readonly><br><br>
+
+        <label for="nombres">Nombres:</label>
+        <input type="text" name="nombres" value="{{ cliente[1] }}" required><br><br>
+
+        <label for="genero">Género:</label>
+        <input type="text" name="genero" value="{{ cliente[2] }}" required><br><br>
+
+        <label for="correo">Correo:</label>
+        <input type="email" name="correo" value="{{ cliente[3] }}" required><br><br>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" name="telefono" value="{{ cliente[4] }}" required><br><br>
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" name="contrasena" value="{{ cliente[5] }}" required><br><br>
+
+        <input type="submit" name="actualizar" value="Actualizar">
+        <input type="submit" name="cancelar" value="Cancelar">
+    </form>
+</body>
+</html>

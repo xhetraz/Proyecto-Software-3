@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRODECOL</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: -100px; 
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #0a0a0a;
+            border-radius: 5px;
+        }
+
+        h2 {
+            margin-top: 0;  
+        }
+
+        #message {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2>Registrar Solicitud</h2>
+    <div class="container">
+    <form action="/registrarsol" method="post">
+        <label>Cédula:</label>
+        <input type="text" name="cedula" required><br><br>
+        
+        <label>Titulo:</label>
+        <input type="text" name="titulo" required><br><br>
+        
+        <label>Tipo de Solicitud:</label>
+        <select name="tiposolicitud" required>
+            <option value="">Seleccionar una opción</option>
+            <option value="cotizacion">Cotización</option>
+            <option value="reclamo">Reclamo</option>
+            <option value="sugerencia">Sugerencia</option>
+          </select><br><br>
+        
+        <label>Fecha:</label>
+        <input type="date" name="fecha" required><br><br>
+
+        <label>Descripción:</label>
+        <input type="text" name="descripcion" required><br><br>
+        
+        <input type="submit" name="registrar" value="Guardar Solicitud">
+        <input type="submit" name="cancelar" value="Cancelar">
+    </form>
+    </div>
+    <p id="message">{{ message }}</p>
+</body>
+</html>
